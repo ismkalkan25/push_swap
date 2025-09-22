@@ -6,7 +6,7 @@
 /*   By: ikalkan <ikalkan@student.42kocaeli.com.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/11 13:04:38 by ikalkan           #+#    #+#             */
-/*   Updated: 2025/09/12 13:40:06 by ikalkan          ###   ########.fr       */
+/*   Updated: 2025/09/22 13:56:42 by ikalkan          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -74,4 +74,23 @@ void	rrb(t_node **b)
 	before_last->next = NULL;
 	last->next = *b;
 	*b = last;
+}
+
+void	give_index(t_node *stack)
+{
+	t_node	*current;
+	t_node	*compare;
+
+	current = stack;
+	while (current)
+	{
+		current->index = 0;
+		compare = stack;
+		while (compare)
+		{
+			if (compare->content < current->content)
+				current->index++;
+		}
+		current = current->next;
+	}
 }

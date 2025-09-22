@@ -6,7 +6,7 @@
 /*   By: ikalkan <ikalkan@student.42kocaeli.com.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/11 12:16:44 by ikalkan           #+#    #+#             */
-/*   Updated: 2025/09/22 13:48:29 by ikalkan          ###   ########.fr       */
+/*   Updated: 2025/09/22 13:56:04 by ikalkan          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@
 typedef struct s_node
 {
 	int				content;
-	int				next;
+	int				index;
 	struct s_node	*next;
 }	t_node;
 
