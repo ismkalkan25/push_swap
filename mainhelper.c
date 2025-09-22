@@ -1,30 +1,45 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   push_swap.c                                        :+:      :+:    :+:   */
+/*   mainhelper.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ikalkan <ikalkan@student.42kocaeli.com.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/09/11 14:13:57 by ikalkan           #+#    #+#             */
-/*   Updated: 2025/09/11 16:13:41 by ikalkan          ###   ########.fr       */
+/*   Created: 2025/09/11 16:03:40 by ikalkan           #+#    #+#             */
+/*   Updated: 2025/09/12 14:34:09 by ikalkan          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include ".../libft.h"
 #include "push_swap.h"
 #include <stdlib.h>
-#include <limits.h>
 
-t_stack	*initiate_stack(void)
+void	clear_stack(t_node	**head)
 {
-	t_stack	*stack;
+	t_node	*tmp;
+	t_node	*next_node;
 
-	stack = malloc(sizeof(t_node));
-	if (!stack)
-		return (NULL);
-	stack->a = NULL;
-	stack->b = NULL;
-	return (stack);
+	tmp = *head;
+	while (tmp != NULL)
+	{
+		next_node = tmp->next;
+		free(tmp);
+		tmp = next_node;
+	}
+	*head = NULL;
+}
+
+int	is_duplicate(t_node *head, int num)
+{
+	t_node	*tmp;
+
+	tmp = head;
+	while (tmp)
+	{
+		if (tmp->value == num)
+			return (1);
+		tmp = tmp->next;
+	}
+	return (0);
 }
 
 int	parse_arg(char *box, t_stack *stack)
@@ -93,7 +108,3 @@ void	add_node_end(t_node **head, t_node *new_node)
 		tmp->next = new_node;
 	}
 }
-
-
-
-

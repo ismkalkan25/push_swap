@@ -6,7 +6,7 @@
 /*   By: ikalkan <ikalkan@student.42kocaeli.com.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/11 13:04:38 by ikalkan           #+#    #+#             */
-/*   Updated: 2025/09/11 16:02:44 by ikalkan          ###   ########.fr       */
+/*   Updated: 2025/09/12 13:40:06 by ikalkan          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -74,18 +74,4 @@ void	rrb(t_node **b)
 	before_last->next = NULL;
 	last->next = *b;
 	*b = last;
-}
-
-int	is_duplicate(t_node *head, int num)
-{
-	t_node	*tmp;
-
-	tmp = head;
-	while (tmp)
-	{
-		if (tmp->value == num)
-			return (1);
-		tmp = tmp->next;
-	}
-	return (0);
 }
