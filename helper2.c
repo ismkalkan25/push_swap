@@ -6,7 +6,7 @@
 /*   By: ikalkan <ikalkan@student.42kocaeli.com.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/22 17:30:07 by ikalkan           #+#    #+#             */
-/*   Updated: 2025/09/25 16:53:41 by ikalkan          ###   ########.fr       */
+/*   Updated: 2025/09/25 18:29:06 by ikalkan          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -90,24 +90,12 @@ void	sort_three(t_node **a)
 
 void	sort_five(t_node **a, t_node **b)
 {
-	int	size;
-	int	swapped;
-
-	size = stack_size(*a);
-	while (size > 3)
+	while (stack_size(*a) > 3)
 	{
-		swapped = 0;
-		if ((*a)->index > (*a)->next->index)
-		{
-			sa(a, 0);
-			swapped = 1;
-		}
-		ra(a);
-		if (swapped)
-			ra(a);
 		if ((*a)->index == 0 || (*a)->index == 1)
 			pb(a, b);
-		size = stack_size(*a);
+		else
+			ra(a);
 	}
 	sort_three(a);
 	if (*b && (*b)->index < (*b)->next->index)
