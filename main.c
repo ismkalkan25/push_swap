@@ -6,7 +6,7 @@
 /*   By: ikalkan <ikalkan@student.42kocaeli.com.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/11 14:13:57 by ikalkan           #+#    #+#             */
-/*   Updated: 2025/09/25 15:34:54 by ikalkan          ###   ########.fr       */
+/*   Updated: 2025/09/25 18:33:39 by ikalkan          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -71,6 +71,7 @@ int	main(int ac, char **av)
 		free_all(stack);
 		return (1);
 	}
+	give_index(stack->a);
 	if (!is_sorted(stack->a))
 	{
 		if (stack_size(stack->a) == 2)
