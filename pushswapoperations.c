@@ -6,77 +6,79 @@
 /*   By: ikalkan <ikalkan@student.42kocaeli.com.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/11 12:29:38 by ikalkan           #+#    #+#             */
-/*   Updated: 2025/09/12 13:45:20 by ikalkan          ###   ########.fr       */
+/*   Updated: 2025/09/25 15:20:40 by ikalkan          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 #include <unistd.h>
 
-void	pb(t_node **a, t_node **b)
-{
-	t_node	*temp;
-
-	if (*a == NULL)
-		return ;
-	temp = *a;
-	*a = (*a)->next;
-	if (*b == NULL)
-		*b = temp;
-	else
-	{
-		temp->next = *b;
-		*b = temp;
-	}
-}
-
 void	pa(t_node **a, t_node **b)
 {
-	t_node	*temp;
+	t_node	*tmp;
 
-	if (*b == NULL)
+	if (!b || !(*b))
 		return ;
-	temp = *b;
+	tmp = *b;
 	*b = (*b)->next;
-	if (*a == NULL)
-		*a = temp;
-	else
-	{
-		temp->next = *a;
-		*a = temp;
-	}
+	tmp->next = *a;
+	*a = tmp;
+	write(1, "pa\n", 3);
 }
 
-void	sa(t_node **a)
+void	pb(t_node **a, t_node **b)
 {
-	t_node	*first;
-	t_node	*second;
+	t_node	*tmp;
 
-	if ((*a == NULL) || (*a->next == NULL))
+	if (!a || !(*a))
 		return ;
-	first = *a;
-	second = *a->next;
-	first->next = second->next;
-	second->next = first;
-	*a = second;
+	tmp = *a;
+	*a = (*a)->next;
+	tmp->next = *b;
+	*b = tmp;
+	write(1, "pb\n", 3);
 }
 
-void	sb(t_node **b)
+void	sa(t_node **a, int check)
 {
-	t_node	*first;
-	t_node	*second;
+	int	tmp_val;
+	int	tmp_idx;
 
-	if ((*b == NULL) || (*b->next == NULL))
+	if (!a || !(*a) || !(*a)->next)
 		return ;
-	first = *b;
-	second = *b->next;
-	first->next = second->next;
-	second->next = first;
-	*b = second;
+	tmp_val = (*a)->content;
+	tmp_idx = (*a)->index;
+	(*a)->content = (*a)->next->content;
+	(*a)->index = (*a)->next->index;
+	(*a)->next->content = tmp_val;
+	(*a)->next->index = tmp_idx;
+	if (!check)
+		write(1, "sa\n", 3);
+}
+
+void	sb(t_node **b, int check)
+{
+	int	tmp_val;
+	int	tmp_idx;
+
+	if (!b || !(*b) || !(*b)->next)
+		return ;
+	tmp_val = (*b)->content;
+	tmp_idx = (*b)->index;
+	(*b)->content = (*b)->next->content;
+	(*b)->index = (*b)->next->index;
+	(*b)->next->content = tmp_val;
+	(*b)->next->index = tmp_idx;
+	if (!check)
+		write(1, "sb\n", 3);
 }
 
 void	ss(t_node **a, t_node **b)
 {
-	sa(a);
-	sb(b);
+	int	check;
+
+	check = 1;
+	sa(a, check);
+	sb(b, check);
+	write(1, "ss\n", 3);
 }

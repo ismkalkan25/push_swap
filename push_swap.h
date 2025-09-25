@@ -6,7 +6,7 @@
 /*   By: ikalkan <ikalkan@student.42kocaeli.com.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/11 12:16:44 by ikalkan           #+#    #+#             */
-/*   Updated: 2025/09/22 13:56:04 by ikalkan          ###   ########.fr       */
+/*   Updated: 2025/09/25 15:38:23 by ikalkan          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,23 +22,30 @@ typedef struct s_node
 
 typedef struct s_stack
 {
-	t_node	a;
-	t_node	b;
+	t_node	*a;
+	t_node	*b;
 }	t_stack;
 
 int		is_duplicate(t_node *head, int num);
-void	clear_stack(t_node	**head);
+void	bit_calc(t_node **a, t_node **b, int bit, int size);
+void	radix_sort(t_node **a, t_node **b);
+int		is_sorted(t_node *stack);
+void	sort_three(t_node **a);
+void	sort_five(t_node **a, t_node **b);
+int		stack_size(t_node *stack);
+void	free_all(t_stack	*stack);
 int		parse_arg(char *box, t_stack *stack);
 int		parse_multiple_arg(t_stack *stack, int ac, char **av);
 void	add_node_end(t_node **head, t_node *new_node);
+void	give_index(t_node *stack);
 void	rrb(t_node **b);
 void	rra(t_node **a);
 void	rb(t_node **b);
 void	ra(t_node **a);
 void	pb(t_node **a, t_node **b);
 void	pa(t_node **a, t_node **b);
-void	sa(t_node **a);
-void	sb(t_node **b);
+void	sa(t_node **a, int check);
+void	sb(t_node **b, int check);
 void	ss(t_node **a, t_node **b);
 
 #endif

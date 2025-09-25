@@ -6,26 +6,36 @@
 /*   By: ikalkan <ikalkan@student.42kocaeli.com.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/11 16:03:40 by ikalkan           #+#    #+#             */
-/*   Updated: 2025/09/12 14:34:09 by ikalkan          ###   ########.fr       */
+/*   Updated: 2025/09/25 15:41:06 by ikalkan          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
+#include "libft/libft.h"
 #include <stdlib.h>
 
-void	clear_stack(t_node	**head)
-{
+void	free_all(t_stack *stack)
+{	
 	t_node	*tmp;
 	t_node	*next_node;
 
-	tmp = *head;
+	if (!stack)
+		return ;
+	tmp = stack->a;
 	while (tmp != NULL)
 	{
 		next_node = tmp->next;
 		free(tmp);
 		tmp = next_node;
 	}
-	*head = NULL;
+	tmp = stack->b;
+	while (tmp != NULL)
+	{
+		next_node = tmp->next;
+		free(tmp);
+		tmp = next_node;
+	}
+	free(stack);
 }
 
 int	is_duplicate(t_node *head, int num)
@@ -35,7 +45,7 @@ int	is_duplicate(t_node *head, int num)
 	tmp = head;
 	while (tmp)
 	{
-		if (tmp->value == num)
+		if (tmp->content == num)
 			return (1);
 		tmp = tmp->next;
 	}
@@ -61,7 +71,7 @@ int	parse_arg(char *box, t_stack *stack)
 		node = malloc(sizeof(t_node));
 		if (!node)
 			return (1);
-		node->value = num;
+		node->content = num;
 		node->next = NULL;
 		add_node_end(&stack->a, node);
 		free(new_box[i]);
@@ -86,7 +96,7 @@ int	parse_multiple_arg(t_stack *stack, int ac, char **av)
 		node = malloc(sizeof(t_node));
 		if (!node)
 			return (1);
-		node->value = num;
+		node->content = num;
 		node->next = NULL;
 		add_node_end(&stack->a, node);
 		i++;
