@@ -6,26 +6,26 @@
 /*   By: ikalkan <ikalkan@student.42kocaeli.com.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/22 17:30:07 by ikalkan           #+#    #+#             */
-/*   Updated: 2025/09/25 15:39:52 by ikalkan          ###   ########.fr       */
+/*   Updated: 2025/09/25 16:04:51 by ikalkan          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-void	bit_calc(t_node **a, t_node **b, int bit, int size)
+void	bit_calc(t_node **a, t_node **b, int bit)
 {
-	t_node	*current;
-	int		j;
+	int	i;
+	int	size;
 
-	j = 0;
-	while (j < size)
+	size = stack_size(*a);
+	i = 0;
+	while (i < size)
 	{
-		current = *a;
-		if (((current->index >> bit) & 1) == 0)
-			pb(a, b);
-		else
+		if (((*a)->index >> bit) & 1)
 			ra(a);
-		j++;
+		else
+			pb(a, b);
+		i++;
 	}
 }
 
@@ -42,7 +42,7 @@ void	radix_sort(t_node **a, t_node **b)
 	i = 0;
 	while (i < max_bits)
 	{
-		bit_calc(a, b, i, size);
+		bit_calc(a, b, i);
 		while (*b)
 			pa(a, b);
 		i++;

@@ -6,7 +6,7 @@
 /*   By: ikalkan <ikalkan@student.42kocaeli.com.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/11 12:16:44 by ikalkan           #+#    #+#             */
-/*   Updated: 2025/09/25 15:38:23 by ikalkan          ###   ########.fr       */
+/*   Updated: 2025/09/25 16:05:25 by ikalkan          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,7 @@ typedef struct s_stack
 }	t_stack;
 
 int		is_duplicate(t_node *head, int num);
-void	bit_calc(t_node **a, t_node **b, int bit, int size);
+void	bit_calc(t_node **a, t_node **b, int bit);
 void	radix_sort(t_node **a, t_node **b);
 int		is_sorted(t_node *stack);
 void	sort_three(t_node **a);
