@@ -6,7 +6,7 @@
 /*   By: ikalkan <ikalkan@student.42kocaeli.com.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/22 17:30:07 by ikalkan           #+#    #+#             */
-/*   Updated: 2025/09/25 16:04:51 by ikalkan          ###   ########.fr       */
+/*   Updated: 2025/09/25 16:53:41 by ikalkan          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,6 +26,7 @@ void	bit_calc(t_node **a, t_node **b, int bit)
 		else
 			pb(a, b);
 		i++;
+		size = stack_size(*a);
 	}
 }
 
@@ -83,23 +84,34 @@ void	sort_three(t_node **a)
 		sa(a, 0);
 		ra(a);
 	}
-	else if ((first < second) && (second < third) && (first > third))
+	else
 		rra(a);
 }
 
 void	sort_five(t_node **a, t_node **b)
 {
 	int	size;
+	int	swapped;
 
 	size = stack_size(*a);
 	while (size > 3)
 	{
+		swapped = 0;
+		if ((*a)->index > (*a)->next->index)
+		{
+			sa(a, 0);
+			swapped = 1;
+		}
+		ra(a);
+		if (swapped)
+			ra(a);
 		if ((*a)->index == 0 || (*a)->index == 1)
 			pb(a, b);
-		else
-			ra(a);
+		size = stack_size(*a);
 	}
 	sort_three(a);
+	if (*b && (*b)->index < (*b)->next->index)
+		sb(b, 0);
 	while (*b)
 		pa(a, b);
 }
