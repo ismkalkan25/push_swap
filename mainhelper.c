@@ -57,24 +57,18 @@ int	parse_arg(char *box, t_stack *stack)
 {
 	char	**new_box;
 	int		i;
-	long	num;
-	t_node	*node;
 
-	i = 0;
 	new_box = ft_split(box, ' ');
 	if (!new_box)
 		return (1);
-	while (new_box[i] != NULL)
+	i = 0;
+	while (new_box[i])
 	{
-		num = ft_atoir(new_box[i]);
-		if (num > INT_MAX || num < INT_MIN || is_duplicate(stack->a, num))
+		if (handle_num(stack, ft_atoir(new_box[i])))
+		{
+			free_split_from(new_box, i);
 			return (1);
-		node = malloc(sizeof(t_node));
-		if (!node)
-			return (1);
-		node->content = num;
-		node->next = NULL;
-		add_node_end(&stack->a, node);
+		}
 		free(new_box[i]);
 		i++;
 	}
