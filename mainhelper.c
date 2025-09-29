@@ -12,6 +12,7 @@
 
 #include "push_swap.h"
 #include "libft/libft.h"
+#include <limits.h>
 #include <stdlib.h>
 
 void	free_all(t_stack *stack)
@@ -56,7 +57,7 @@ int	parse_arg(char *box, t_stack *stack)
 {
 	char	**new_box;
 	int		i;
-	int		num;
+	long	num;
 	t_node	*node;
 
 	i = 0;
@@ -66,7 +67,7 @@ int	parse_arg(char *box, t_stack *stack)
 	while (new_box[i] != NULL)
 	{
 		num = ft_atoir(new_box[i]);
-		if (is_duplicate(stack->a, num))
+		if (num > INT_MAX || num < INT_MIN || is_duplicate(stack->a, num))
 			return (1);
 		node = malloc(sizeof(t_node));
 		if (!node)
@@ -84,14 +85,14 @@ int	parse_arg(char *box, t_stack *stack)
 int	parse_multiple_arg(t_stack *stack, int ac, char **av)
 {
 	int		i;
-	int		num;
+	long	num;
 	t_node	*node;
 
 	i = 1;
 	while (i < ac)
 	{
 		num = ft_atoir(av[i]);
-		if (is_duplicate(stack->a, num))
+		if (num > INT_MAX || num < INT_MIN || is_duplicate(stack->a, num))
 			return (1);
 		node = malloc(sizeof(t_node));
 		if (!node)

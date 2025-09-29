@@ -3,11 +3,11 @@ static int	is_space(char c)
 	return (c == ' ' || (c >= 9 && c <= 13));
 }
 
-int	ft_atoir(const char *nptr)
+long	ft_atoir(const char *nptr)
 {
 	int				i;
 	int				sign;
-	int				res;
+	long			res;
 
 	i = 0;
 	sign = 1;

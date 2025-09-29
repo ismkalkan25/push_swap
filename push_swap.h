@@ -29,7 +29,7 @@ typedef struct s_stack
 int		is_duplicate(t_node *head, int num);
 void	bit_calc(t_node **a, t_node **b, int bit);
 void	radix_sort(t_node **a, t_node **b);
-int		ft_atoir(const char *nptr);
+long	ft_atoir(const char *nptr);
 int		is_sorted(t_node *stack);
 void	sort_three(t_node **a);
 void	sort_five(t_node **a, t_node **b);
