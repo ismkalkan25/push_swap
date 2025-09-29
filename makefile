@@ -9,6 +9,7 @@ RM = rm -rf
 SRCS = 	main.c\
 		mainhelper.c\
 		helper2.c\
+		helper3.c\
 		pushswapoperations.c\
 		rroperations.c\
 		libft/libft.a\

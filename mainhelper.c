@@ -65,7 +65,7 @@ int	parse_arg(char *box, t_stack *stack)
 		return (1);
 	while (new_box[i] != NULL)
 	{
-		num = ft_atoi(new_box[i]);
+		num = ft_atoir(new_box[i]);
 		if (is_duplicate(stack->a, num))
 			return (1);
 		node = malloc(sizeof(t_node));
@@ -90,7 +90,7 @@ int	parse_multiple_arg(t_stack *stack, int ac, char **av)
 	i = 1;
 	while (i < ac)
 	{
-		num = ft_atoi(av[i]);
+		num = ft_atoir(av[i]);
 		if (is_duplicate(stack->a, num))
 			return (1);
 		node = malloc(sizeof(t_node));
