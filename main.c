@@ -6,7 +6,7 @@
 /*   By: ikalkan <ikalkan@student.42kocaeli.com.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/11 14:13:57 by ikalkan           #+#    #+#             */
-/*   Updated: 2025/09/25 18:33:39 by ikalkan          ###   ########.fr       */
+/*   Updated: 2025/10/01 12:37:57 by ikalkan          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,10 +64,11 @@ int	main(int ac, char **av)
 {
 	t_stack	*stack;
 
+	if (ac == 1)
+		return (0);
 	stack = initiate_stack();
 	if (!stack || handle_input(ac, av, stack))
 	{
-		ft_putstr_fd("Error\n", 2);
 		free_all(stack);
 		return (1);
 	}

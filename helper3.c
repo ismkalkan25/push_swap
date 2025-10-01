@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   helper3.c                                          :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: ikalkan <ikalkan@student.42kocaeli.com.    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2025/10/01 11:58:49 by ikalkan           #+#    #+#             */
+/*   Updated: 2025/10/01 11:59:07 by ikalkan          ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "push_swap.h"
 #include <limits.h>
 #include <unistd.h>
@@ -7,6 +19,7 @@ static int	is_space(char c)
 {
 	return (c == ' ' || (c >= 9 && c <= 13));
 }
+
 static int	is_valid_number(const char *str)
 {
 	int	i;
@@ -36,7 +49,7 @@ long	ft_atoir(const char *nptr)
 	i = 0;
 	sign = 1;
 	res = 0;
-    if (!is_valid_number(nptr))
+	if (!is_valid_number(nptr))
 		return ((long)INT_MAX + 1);
 	while (is_space(nptr[i]))
 		i++;
